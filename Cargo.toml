@@ -27,6 +27,15 @@ panic = "warn"
 # Keep file/line backtraces without full type and variable debug information.
 debug = "line-tables-only"
 
+# portfolio-engine's property tests take minutes in an unoptimized build, mostly
+# in the engine and rust_decimal. opt-level leaves overflow checks and debug
+# assertions on.
+[profile.test.package.wealthfolio-portfolio-engine]
+opt-level = 3
+
+[profile.test.package.rust_decimal]
+opt-level = 3
+
 [workspace.dependencies]
 # Async runtime
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
