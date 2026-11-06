@@ -4,6 +4,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- `ActivityImport.charges` and the `ActivityCharge` type: labelled lines that
+  break an imported row's `fee` and `tax` down as the statement listed them
+  (commission, stamp duty, ...). Each line is `fee` or `tax`, a free-text label
+  and an amount in the row's currency. The lines must add up to both totals or
+  the row is rejected, and `checkImport` flags it. They are stored in the
+  activity's `metadata.charges` and change no calculation. Older hosts ignore
+  the field.
+
 ## [3.12.0] - 2026-11-01
 
 ### Added
